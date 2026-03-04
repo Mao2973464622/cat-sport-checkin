@@ -1,0 +1,306 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", "微软雅黑", sans-serif;
+}
+
+:root {
+    --primary-color: #4096ff;
+    --secondary-color: #e5e8eb;
+    --text-color: #333;
+    --light-text: #666;
+    --white: #fff;
+    --background: #f5f7fa;
+    --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --required-color: #ff4d4f;
+}
+
+/* 暗黑模式 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #54a0ff;
+        --secondary-color: #333;
+        --text-color: #e5e8eb;
+        --light-text: #999;
+        --white: #222;
+        --background: #181818;
+        --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    }
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 头部 */
+.header {
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--secondary-color);
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.header p {
+    color: var(--light-text);
+    margin-bottom: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 4px;
+}
+
+nav a.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* 主内容 */
+.main {
+    padding-bottom: 50px;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/* 表单样式 */
+.form-card h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.required {
+    color: var(--required-color);
+}
+
+.optional {
+    color: var(--light-text);
+    font-size: 0.85rem;
+    margin-left: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    background-color: var(--background);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+input:read-only {
+    background-color: var(--secondary-color);
+    cursor: not-allowed;
+}
+
+.optional-group {
+    margin-top: 20px;
+    border-top: 1px dashed var(--secondary-color);
+    padding-top: 20px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    flex: 2;
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    flex: 1;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* 结果卡片 */
+.result-card {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: var(--background);
+    border-radius: 8px;
+}
+
+.result-card h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.calorie-tip {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--secondary-color);
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+/* 记录卡片 */
+.records-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.small-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+.records-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.record-item {
+    padding: 15px;
+    border-bottom: 1px solid var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.record-item:last-child {
+    border-bottom: none;
+}
+
+.record-item .record-time {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.record-item .record-data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.empty-tip {
+    text-align: center;
+    color: var(--light-text);
+    padding: 30px 0;
+}
+
+/* 功能介绍页 */
+.features-card {
+    line-height: 1.8;
+}
+
+.features-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.features-group {
+    margin-bottom: 30px;
+}
+
+.features-group h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.features-list {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.features-list li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.features-list li::before {
+    content: "✓";
+    color: var(--primary-color);
+    position: absolute;
+    left: -20px;
+}
+
+/* 页脚 */
+.footer {
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid var(--secondary-color);
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+.footer p {
+    margin-bottom: 5px;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+}

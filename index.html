@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猫猫の运动打卡</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container">
+            <h1>猫猫の运动打卡</h1>
+            <p>专注你的运动与身体数据记录 · 数据仅存本地，隐私安全</p>
+            <nav>
+                <a href="index.html" class="active">打卡首页</a>
+                <a href="features.html">功能介绍</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main class="container main">
+        <!-- 打卡表单 -->
+        <section class="card form-card">
+            <h2>今日打卡</h2>
+            <form id="checkinForm">
+                <!-- 必填项 -->
+                <div class="form-group">
+                    <label for="age">年龄 <span class="required">*</span></label>
+                    <input type="number" id="age" min="1" max="120" required placeholder="例：25">
+                </div>
+                <div class="form-group">
+                    <label for="height">身高(cm) <span class="required">*</span></label>
+                    <input type="number" id="height" min="100" max="250" step="0.1" required placeholder="例：165.5">
+                </div>
+                <div class="form-group">
+                    <label for="weight">体重(kg) <span class="required">*</span></label>
+                    <input type="number" id="weight" min="20" max="300" step="0.1" required placeholder="例：52.3">
+                </div>
+                <div class="form-group">
+                    <label for="gender">性别 <span class="required">*</span></label>
+                    <select id="gender" required>
+                        <option value="">请选择</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                    </select>
+                </div>
+
+                <!-- 可选项 -->
+                <div class="form-group optional-group">
+                    <label for="bmi">BMI <span class="optional">(自动计算)</span></label>
+                    <input type="text" id="bmi" readonly placeholder="填写身高体重后自动计算">
+                </div>
+                <div class="form-group optional-group">
+                    <label for="bmr">BMR(基础代谢) <span class="optional">(自动计算)</span></label>
+                    <input type="text" id="bmr" readonly placeholder="填写信息后自动计算">
+                </div>
+                <div class="form-group optional-group">
+                    <label for="bust">胸围(cm) <span class="optional">(可选)</span></label>
+                    <input type="number" id="bust" step="0.1" placeholder="例：85">
+                </div>
+                <div class="form-group optional-group">
+                    <label for="waist">腰围(cm) <span class="optional">(可选)</span></label>
+                    <input type="number" id="waist" step="0.1" placeholder="例：65">
+                </div>
+                <div class="form-group optional-group">
+                    <label for="hip">臀围(cm) <span class="optional">(可选)</span></label>
+                    <input type="number" id="hip" step="0.1" placeholder="例：90">
+                </div>
+                <div class="form-group optional-group">
+                    <label for="fatType">脂肪类型 <span class="optional">(可选)</span></label>
+                    <select id="fatType">
+                        <option value="">请选择</option>
+                        <option value="visceral">内脏脂肪型</option>
+                        <option value="subcutaneous">皮下脂肪型</option>
+                        <option value="mixed">混合型</option>
+                    </select>
+                </div>
+                <div class="form-group optional-group">
+                    <label for="weightType">体重类型 <span class="optional">(可选)</span></label>
+                    <select id="weightType">
+                        <option value="">请选择</option>
+                        <option value="underweight">偏瘦</option>
+                        <option value="normal">正常</option>
+                        <option value="overweight">超重</option>
+                        <option value="obese">肥胖</option>
+                    </select>
+                </div>
+                <div class="form-group optional-group">
+                    <label for="loseFatType">减脂类型 <span class="optional">(可选)</span></label>
+                    <select id="loseFatType">
+                        <option value="">请选择</option>
+                        <option value="lowCarb">低碳减脂</option>
+                        <option value="calorieControl">热量控制</option>
+                        <option value="highProtein">高蛋白减脂</option>
+                        <option value="exercise">运动减脂</option>
+                    </select>
+                </div>
+                <div class="form-group optional-group">
+                    <label for="sportType">运动类型 <span class="optional">(可选)</span></label>
+                    <select id="sportType">
+                        <option value="">请选择</option>
+                        <option value="running">跑步</option>
+                        <option value="yoga">瑜伽</option>
+                        <option value="strength">力量训练</option>
+                        <option value="rope">跳绳</option>
+                        <option value="walk">快走</option>
+                    </select>
+                </div>
+                <div class="form-group optional-group">
+                    <label for="sportTime">运动时长(分钟) <span class="optional">(可选)</span></label>
+                    <input type="number" id="sportTime" min="0" placeholder="例：30">
+                </div>
+                <div class="form-group optional-group">
+                    <label for="note">打卡备注 <span class="optional">(可选)</span></label>
+                    <textarea id="note" placeholder="记录今日运动感受、饮食等（支持多行）"></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn primary-btn">提交打卡</button>
+                    <button type="reset" class="btn secondary-btn">清空表单</button>
+                </div>
+            </form>
+
+            <!-- 计算结果 -->
+            <div class="result-card" id="resultCard" style="display: none;">
+                <h3>计算结果</h3>
+                <div id="resultContent"></div>
+                <div class="calorie-tip" id="calorieTip"></div>
+            </div>
+        </section>
+
+        <!-- 打卡记录 -->
+        <section class="card records-card">
+            <div class="card-header">
+                <h2>打卡记录</h2>
+                <button class="btn small-btn" id="exportBtn">导出记录</button>
+            </div>
+            <div id="recordsList" class="records-list">
+                <p class="empty-tip">暂无打卡记录，快来完成第一次打卡吧～</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>作者：猫猫 | QQ：2973464622 | 邮箱：2973464622@qq.com</p>
+            <p>© 2026 猫猫の运动打卡 · 所有数据仅存储在本地浏览器，隐私安全</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
